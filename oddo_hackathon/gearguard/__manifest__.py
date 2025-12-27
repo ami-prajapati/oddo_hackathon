@@ -15,10 +15,12 @@ a simple workflow and clean UI.
     'depends': ['base'],
 
     'data': [
-        'security/ir.model.access.csv',
-        # views baad me add karenge
+    'security/ir.model.access.csv',
+    'views/equipment_views.xml',
+    'views/main_req_form.xml',
+    'views/main_req_kanban.xml',
+    'views/main_cal.xml',
     ],
-
     'installable': True,
     'application': True,
 }

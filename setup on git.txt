@@ -1,0 +1,29 @@
+1) git config --global user.name Dhwani
+2) git config --global user.email dhwanidabhi2@gmail.com
+
+check the user and mail
+
+1) git config user.name
+2) git config user.email
+
+code .
+
+login page
+	email id
+	password
+sign up page
+	name
+	email
+	password
+	re-enter
+	signup button
+dashoard
+	maintance
+	dashboard
+	maintance calender
+	equitment
+	reporting
+	teams
+
+
+https://github.com/ami-prajapati/oddo_hackathon

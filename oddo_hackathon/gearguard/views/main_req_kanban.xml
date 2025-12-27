@@ -1,18 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-  <record id="view_gearguard_request_kanban" model="ir.ui.view">
-    <field name="model">gearguard.request</field>
-    <field name="arch" type="xml">
-      <kanban default_group_by="stage">
-        <field name="name"/>
-        <templates>
-          <t t-name="kanban-box">
-            <div>
-              <strong><field name="name"/></strong>
-              <div><field name="technician_id"/></div>
-            </div>
-          </t>
-        </templates>
-      </kanban>
-    </field>
-  </record>
+
+    <record id="view_gearguard_request_kanban" model="ir.ui.view">
+        <field name="name">gearguard.request.kanban</field>
+        <field name="model">gearguard.request</field>
+        <field name="arch" type="xml">
+
+            <kanban default_group_by="stage" class="o_kanban_small_column">
+
+                <!-- Fields used in kanban -->
+                <field name="name"/>
+                <field name="stage"/>
+                <field name="technician_id"/>
+                <field name="equipment_id"/>
+
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click o_kanban_card">
+
+                            <!-- TITLE -->
+                            <div class="o_kanban_card_header">
+                                <strong>
+                                    <field name="name"/>
+                                </strong>
+                            </div>
+
+                            <!-- EQUIPMENT -->
+                            <div class="o_kanban_card_body">
+                                <div>
+                                    <i class="fa fa-cogs"/> 
+                                    <field name="equipment_id"/>
+                                </div>
+
+                                <!-- TECHNICIAN WITH AVATAR -->
+                                <div t-if="record.technician_id.raw_value" class="mt8 d-flex align-items-center">
+                                    <img t-att-src="kanban_image(
+                                        'res.users',
+                                        'image_128',
+                                        record.technician_id.raw_value
+                                    )"
+                                    class="rounded-circle me8"
+                                    style="width:32px;height:32px;"/>
+
+                                    <span>
+                                        <field name="technician_id"/>
+                                    </span>
+                                </div>
+
+                                <!-- STATUS -->
+                                <div class="mt8">
+                                    <span class="badge bg-secondary">
+                                        <field name="stage"/>
+                                    </span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </t>
+                </templates>
+
+            </kanban>
+        </field>
+    </record>
+
 </odoo>
